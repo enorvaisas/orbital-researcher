@@ -1,12 +1,17 @@
 {
-  "dockerfile_lines": [],
-  "graphs": {
-    "research_agent": "./src/research_agent/graph.py:graph"
+  "$schema": "https://langgraph.com/schemas/langgraph-0.0.20-configuration.json",
+  "agents": {
+    "research": {
+      "path": "src.research_agent.graph:create_research_graph",
+      "verbose": true,
+      "schema": "./schema.json",
+      "dependencies": ["langchain_core", "langchain_anthropic", "langchain_openai", "langchain_community", "beautifulsoup4", "requests"]
+    }
   },
-  "python_version": "3.11",
-  "env": "./.env",
-  "dependencies": [
-    "."
-  ],
-  "schema": "./schema.json"
+  "project_metadata": {
+    "name": "orbital-researcher",
+    "description": "A research agent that uses web search to answer questions",
+    "icon": "🌐",
+    "version": "0.1.0"
+  }
 }
