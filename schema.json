@@ -1,0 +1,48 @@
+{
+  "type": "object",
+  "properties": {
+    "system_prompt": {
+      "type": "string",
+      "description": "The system prompt to use for the agent's interactions. This prompt sets the context and behavior for the agent.",
+      "default": "You are a research assistant that helps people find information and analyze it."
+    },
+    "model": {
+      "type": "string",
+      "description": "The name of the language model to use for the agent's main interactions. Should be in the form: provider/model-name.",
+      "default": "anthropic/claude-3-5-sonnet-20240620",
+      "enum": [
+        "anthropic/claude-3-5-sonnet-20240620",
+        "anthropic/claude-3-haiku-20240307",
+        "openai/gpt-4o",
+        "openai/gpt-3.5-turbo",
+        "ollama/llama3"
+      ]
+    },
+    "max_search_results": {
+      "type": "integer",
+      "description": "The maximum number of search results to return for each search query.",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "max_web_research_loops": {
+      "type": "integer",
+      "description": "Number of research iterations to perform for deep dive research.",
+      "default": 3,
+      "minimum": 1,
+      "maximum": 10
+    },
+    "search_api": {
+      "type": "string",
+      "description": "Web search API to use for research",
+      "default": "duckduckgo",
+      "enum": ["perplexity", "tavily", "duckduckgo", "searxng"]
+    },
+    "fetch_full_page": {
+      "type": "boolean",
+      "description": "Whether to fetch and analyze the full content of web pages",
+      "default": true
+    }
+  },
+  "required": ["system_prompt", "model", "max_search_results", "max_web_research_loops", "search_api"]
+}
